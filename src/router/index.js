@@ -68,17 +68,31 @@ const routes = [
       },
       // 图书副本
       {
-        path: 'book/copy',
+        path: '/book/copy',
         name: 'BookCopy',
-        component: () => import('../views/book/BookCopy.vue'),
+        component: () => import('@/views/book/BookCopy.vue'),
         meta: { title: '图书副本', pageName: '图书副本', requireAuth: true },
       },
-      // 图书副本
+      // 图书查阅
       {
-        path: 'bookDisplay',
-        name: 'bookDisplay',
-        component: () => import('../views/BookDisplay.vue'),
+        path: '/bookDisplay',
+        name: 'BookDisplay',
+        component: () => import('@/views/BookDisplay.vue'),
         meta: { title: '图书查阅', pageName: '图书查阅', requireAuth: true },
+      },
+      // 读者证类型
+      {
+        path: '/card/type',
+        name: 'CardType',
+        component: () => import('@/views/card/CardType.vue'),
+        meta: { title: '读者证类型', pageName: '读者证类型', requireAuth: true },
+      },
+      // 读者证管理
+      {
+        path: '/card/manager',
+        name: 'CardManager',
+        component: () => import('@/views/card/CardManager.vue'),
+        meta: { title: '读者证管理', pageName: '读者证管理', requireAuth: true },
       },
     ],
   },

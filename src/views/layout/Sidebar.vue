@@ -62,15 +62,25 @@ const toggleCollapse = () => {
           <span>图书管理</span>
         </template>
 
-        <el-menu-item index="/book/manager" title="图书列表">图书列表</el-menu-item>
-        <el-menu-item index="/book/category" title="图书分类">图书分类</el-menu-item>
-        <el-menu-item index="/book/copy" title="图书副本">图书副本</el-menu-item>
+        <el-menu-item index="/book/manager">图书列表</el-menu-item>
+        <el-menu-item index="/book/category">图书分类</el-menu-item>
+        <el-menu-item index="/book/copy">图书副本</el-menu-item>
       </el-sub-menu>
       <!-- 图书查阅 -->
       <el-menu-item index="/bookDisplay">
         <el-icon><Search /></el-icon>
         <template #title>图书查阅</template>
       </el-menu-item>
+      <!-- 证件管理 -->
+      <el-sub-menu index="/card">
+        <template #title>
+          <el-icon><CreditCard /></el-icon>
+          <span>证件管理</span>
+        </template>
+
+        <el-menu-item index="/card/type">读者证类型</el-menu-item>
+        <el-menu-item index="/card/manager">读者证管理</el-menu-item>
+      </el-sub-menu>
     </el-menu>
   </el-aside>
 </template>

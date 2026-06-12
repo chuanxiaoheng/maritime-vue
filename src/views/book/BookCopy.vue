@@ -80,7 +80,7 @@
         <el-table-column prop="createTime" label="创建时间" width="220" />
         <el-table-column prop="lastBorrowedTime" label="最近借阅时间" width="220" />
         <el-table-column prop="lastReturnedTime" label="最近归还时间" width="220" />
-        <el-table-column label="操作" width="250" fixed="right">
+        <el-table-column label="操作" width="300" fixed="right">
           <template #default="scope">
             <el-button link type="primary" @click="handleEdit(scope.row)" icon="Edit" style="margin-left: 0">编辑</el-button>
             <el-button link type="danger" @click="handleDelete(scope.row)" icon="Delete" style="margin-left: 0">删除</el-button>

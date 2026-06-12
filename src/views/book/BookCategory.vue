@@ -305,7 +305,7 @@ onMounted(() => {
           <el-input v-model="categoryForm.parentId" placeholder="请输入父级编号" disabled />
         </el-form-item>
         <el-form-item label="分类描述" prop="description">
-          <el-input v-model="categoryForm.description" type="textarea" placeholder="请输入描述" />
+          <el-input v-model="categoryForm.description" type="textarea" :row="3" placeholder="请输入描述" />
         </el-form-item>
       </el-form>
       <template #footer>

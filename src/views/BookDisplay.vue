@@ -131,6 +131,17 @@
         </el-table-column>
         <el-table-column prop="description" label="描述" width="200" align="center" show-overflow-tooltip />
       </el-table>
+
+      <!-- 分页 -->
+      <el-pagination
+        v-model:current-page="pagination.pageNum"
+        v-model:page-size="pagination.pageSize"
+        :total="pagination.total"
+        layout="total, sizes, prev, pager, next, jumper"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        style="margin-top: 20px; text-align: right"
+      />
     </el-card>
 
     <!-- 查看详情弹窗 -->
@@ -175,17 +186,6 @@
         </el-descriptions>
       </div>
     </el-dialog>
-
-    <!-- 分页 -->
-    <el-pagination
-      v-model:current-page="pagination.pageNum"
-      v-model:page-size="pagination.pageSize"
-      :total="pagination.total"
-      layout="total, sizes, prev, pager, next, jumper"
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-      style="margin-top: 20px; text-align: right"
-    />
   </div>
 </template>
 
