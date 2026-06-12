@@ -17,7 +17,7 @@
       <template #header>
         <div class="card-header">
           <div>
-            <span>图书分类列表</span>
+            <span>读者证分类列表</span>
             <el-tag type="info" size="small" style="margin-left: 10px">{{ `共${pagination.total}条记录` }} </el-tag>
           </div>
           <div>
@@ -35,28 +35,28 @@
 
       <!-- 数据表格 -->
       <el-table :data="tableData" v-loading="loading" stripe @selection-change="handleSelectionChange" empty-text="暂无数据">
-        <el-table-column type="selection" width="55" />
-        <el-table-column prop="id" label="ID" width="80" />
-        <el-table-column prop="name" label="类型名称" width="120" />
-        <el-table-column prop="maxBooks" label="最大借阅数量" width="120" show-overflow-tooltip />
-        <el-table-column prop="maxDays" label="最大借阅天数" width="120" />
-        <el-table-column prop="renewCount" label="续借次数" width="120" />
-        <el-table-column prop="renewDays" label="续借天数" width="120" />
-        <el-table-column prop="overdueFee" label="超期费用" width="120" />
-        <el-table-column prop="depositAmount" label="押金" width="120" />
-        <el-table-column label="状态" width="120">
+        <el-table-column type="selection" width="55" align="center" />
+        <el-table-column prop="id" label="ID" width="80" align="center" />
+        <el-table-column prop="name" label="类型名称" width="120" align="center" />
+        <el-table-column prop="maxBooks" label="最大借阅数量" width="120" show-overflow-tooltip align="center" />
+        <el-table-column prop="maxDays" label="最大借阅天数" width="120" align="center" />
+        <el-table-column prop="renewCount" label="续借次数" width="120" align="center" />
+        <el-table-column prop="renewDays" label="续借天数" width="120" align="center" />
+        <el-table-column prop="overdueFee" label="超期费用" width="120" align="center" />
+        <el-table-column prop="depositAmount" label="押金" width="120" align="center" />
+        <el-table-column label="状态" width="120" align="center">
           <template #default="{ row }">
             <el-tag size="small" :type="row.status === 1 ? 'success' : 'danger'">
               <span>{{ row.status === 1 ? '启用' : '禁用' }}</span>
             </el-tag>
           </template>
         </el-table-column>
-        <el-table-column prop="description" label="描述" min-width="120" show-overflow-tooltip></el-table-column>
+        <el-table-column prop="description" label="描述" min-width="120" show-overflow-tooltip align="center" />
 
-        <el-table-column label="操作" width="300" fixed="right">
+        <el-table-column label="操作" width="300" fixed="right" align="center">
           <template #default="scope">
-            <el-button link type="primary" @click="handleEdit(scope.row)" icon="Edit" style="margin-left: 0">编辑</el-button>
-            <el-button link type="danger" @click="handleDelete(scope.row)" icon="Delete" style="margin-left: 0">删除</el-button>
+            <el-button link type="primary" @click="handleEdit(scope.row)" icon="Edit">编辑</el-button>
+            <el-button link type="danger" @click="handleDelete(scope.row)" icon="Delete">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -156,7 +156,7 @@ import { nextTick, onMounted, reactive, ref } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { addCardType, deleteBatchCardType, deleteCardType, fetchCardTypePage, updateCardType } from '@/api/card/type'
 const loading = ref(false)
-// 图书分类表格数据
+// 读者证类型表格数据
 const tableData = ref([])
 const selectedRows = ref([])
 // 分页数据
@@ -218,7 +218,7 @@ const rules = reactive({
 })
 
 const handleAdd = () => {
-  dialogTitle.value = '新增图书分类'
+  dialogTitle.value = '新增读者证分类'
   dialogVisible.value = true
   // 等待DOM更新完毕，确保表单已经挂载
   isEdit.value = false
@@ -231,7 +231,7 @@ const handleAdd = () => {
 }
 const handleEdit = (row) => {
   dialogVisible.value = true
-  dialogTitle.value = '编辑图书分类'
+  dialogTitle.value = '编辑读者证分类'
   isEdit.value = true
   nextTick(() => {
     Object.assign(cardForm, row)
@@ -239,7 +239,7 @@ const handleEdit = (row) => {
 }
 
 const handleDelete = (row) => {
-  ElMessageBox.confirm(`确定要删除${row.name}这类读者证吗？`, '警告', {
+  ElMessageBox.confirm(`确定要删除"${row.name}"这个读者证分类吗？`, '警告', {
     confirmButtonText: '确认',
     cancelButtonText: '取消',
     type: 'warning',
@@ -255,7 +255,7 @@ const handleDelete = (row) => {
     .catch((err) => console.log(err))
 }
 const handleBatchDelete = () => {
-  ElMessageBox.confirm(`确定要删除这些分类吗？`, '警告', {
+  ElMessageBox.confirm(`确定要删除这些读者证分类吗？`, '警告', {
     confirmButtonText: '确认',
     cancelButtonText: '取消',
     type: 'warning',

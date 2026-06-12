@@ -61,29 +61,29 @@
         @selection-change="handleSelectionChange"
         empty-text="暂无数据"
       >
-        <el-table-column type="selection" width="55" />
-        <el-table-column prop="id" label="副本ID" width="80" />
-        <el-table-column prop="bookId" label="图书编号" width="80" />
-        <el-table-column prop="bookTitle" label="图书名称" min-width="180" show-overflow-tooltip />
-        <el-table-column prop="copyNo" label="副本编号" width="120" sortable />
-        <el-table-column prop="barcode" label="条形码" width="150" sortable />
-        <el-table-column prop="location" label="索书号" width="140" sortable />
-        <el-table-column prop="status" label="状态" width="100" sortable>
+        <el-table-column type="selection" width="55" align="center" />
+        <el-table-column prop="id" label="副本ID" width="80" align="center" />
+        <el-table-column prop="bookId" label="图书编号" width="80" align="center" />
+        <el-table-column prop="bookTitle" label="图书名称" min-width="180" show-overflow-tooltip align="center" />
+        <el-table-column prop="copyNo" label="副本编号" width="120" sortable align="center" />
+        <el-table-column prop="barcode" label="条形码" width="150" sortable align="center" />
+        <el-table-column prop="location" label="索书号" width="140" sortable align="center" />
+        <el-table-column prop="status" label="状态" width="100" sortable align="center">
           <template #default="scope">
             <el-tag :type="statusMap[scope.row.status].type" size="small">
               {{ statusMap[scope.row.status].text }}
             </el-tag>
           </template>
         </el-table-column>
-        <el-table-column prop="borrowCount" label="借阅次数" width="100" />
-        <el-table-column prop="remark" label="状态备注" min-width="150" show-overflow-tooltip />
-        <el-table-column prop="createTime" label="创建时间" width="220" />
-        <el-table-column prop="lastBorrowedTime" label="最近借阅时间" width="220" />
-        <el-table-column prop="lastReturnedTime" label="最近归还时间" width="220" />
-        <el-table-column label="操作" width="300" fixed="right">
+        <el-table-column prop="borrowCount" label="借阅次数" width="100" align="center" />
+        <el-table-column prop="remark" label="状态备注" min-width="150" show-overflow-tooltip align="center" />
+        <el-table-column prop="createTime" label="创建时间" width="220" align="center" />
+        <el-table-column prop="lastBorrowedTime" label="最近借阅时间" width="220" align="center" />
+        <el-table-column prop="lastReturnedTime" label="最近归还时间" width="220" align="center" />
+        <el-table-column label="操作" width="300" fixed="right" align="center">
           <template #default="scope">
-            <el-button link type="primary" @click="handleEdit(scope.row)" icon="Edit" style="margin-left: 0">编辑</el-button>
-            <el-button link type="danger" @click="handleDelete(scope.row)" icon="Delete" style="margin-left: 0">删除</el-button>
+            <el-button link type="primary" @click="handleEdit(scope.row)" icon="Edit">编辑</el-button>
+            <el-button link type="danger" @click="handleDelete(scope.row)" icon="Delete">删除</el-button>
           </template>
         </el-table-column>
       </el-table>

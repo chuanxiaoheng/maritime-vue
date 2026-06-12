@@ -80,7 +80,7 @@ const handleEdit = (row) => {
 }
 
 const handleDelete = (row) => {
-  ElMessageBox.confirm(`确定要删除${row.name}这个分类吗？`, '警告', {
+  ElMessageBox.confirm(`确定要删除“${row.name}”这个分类吗？`, '警告', {
     confirmButtonText: '确认',
     cancelButtonText: '取消',
     type: 'warning',
