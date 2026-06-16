@@ -28,3 +28,10 @@ export const updatePrivacy = (data) => {
 export const updateUserOff = () => {
   return request.delete('/api/user/off')
 }
+// 查询无读者证用户数据
+export const fetchWithoutCardUsers = () => {
+  return request({
+    url: '/api/user/withoutCardUsers',
+    method: 'get',
+  })
+}
