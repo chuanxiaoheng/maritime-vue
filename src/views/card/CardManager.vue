@@ -101,13 +101,21 @@
         </el-form-item>
 
         <el-form-item label="选择读者" prop="userId">
-          <el-select v-model="cardForm.userId" placeholder="请选择读者" filterable :filter-method="filterUsers" clearable>
+          <el-select
+            v-model="cardForm.userId"
+            placeholder="请选择读者"
+            filterable
+            :filter-method="filterUsers"
+            clearable
+            @change="handleUserSelect"
+            :disabled="isEdit"
+          >
             <el-option v-for="user in showUsers" :key="user.id" :value="user.id" :label="user.username"></el-option>
           </el-select>
         </el-form-item>
 
         <el-form-item label="选择读者证类型" prop="typeId">
-          <el-radio-group v-model="cardForm.typeId">
+          <el-radio-group v-model="cardForm.typeId" @change="handleCardTypeChange">
             <el-radio v-for="cardType in cardTypeData" :key="cardType.id" :value="Number(cardType.id)" :label="cardType.name"></el-radio>
           </el-radio-group>
         </el-form-item>
@@ -117,7 +125,7 @@
         </el-form-item>
 
         <el-form-item label="累计欠费/罚金" prop="totalFine">
-          <el-input-number v-model="cardForm.totalFine" :min="0" :max="10000" :precision="2" style="width: 100%" />
+          <el-input-number v-model="cardForm.totalFine" :min="0" :max="10000" :precision="2" style="width: 100%" :disabled="!isEdit" />
         </el-form-item>
 
         <el-form-item label="有效期" prop="effectiveAge">
@@ -208,6 +216,8 @@ const cardTypeData = ref([])
 // 无读者证用户数据
 const withoutCardUsers = ref([])
 
+// 当前的读者证类型
+const currentCardType = ref('')
 // 无读者证用户数
 const allUsers = ref([])
 const showUsers = ref([])
@@ -255,7 +265,9 @@ const filterUsers = (query) => {
 
 // 选择用户
 const handleUserSelect = (val) => {
+  // console.log(val)
   const selectedUser = allUsers.value.find((item) => item.id === val)
+  // console.log(selectedUser)
   if (selectedUser) {
     cardForm.username = selectedUser.username
   } else {
@@ -263,12 +275,33 @@ const handleUserSelect = (val) => {
   }
 }
 
+// 选择读者证类型
+const handleCardTypeChange = (val) => {
+  // 根据选中读者证类型，获取读者证对象
+  currentCardType.value = cardTypeData.value.find((item) => item.id == val)
+  cardForm.actualDeposit = currentCardType.value.depositAmount
+}
+
+// 编辑
 const handleEdit = (row) => {
   dialogVisible.value = true
   dialogTitle.value = '编辑读者证'
   isEdit.value = true
+
+  // console.log(row)
+  // 解决：只赋值同名属性
   nextTick(() => {
-    Object.assign(cardForm, row)
+    Object.keys(cardForm).forEach((key) => {
+      // 只有存在key才赋值
+      if (row.hasOwnProperty(key)) {
+        cardForm[key] = row[key]
+      }
+    })
+    const currentUser = {
+      id: cardForm.userId,
+      username: cardForm.username,
+    }
+    showUsers.value = [currentUser]
   })
 }
 

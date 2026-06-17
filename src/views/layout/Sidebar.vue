@@ -81,6 +81,17 @@ const toggleCollapse = () => {
         <el-menu-item index="/card/type">读者证类型</el-menu-item>
         <el-menu-item index="/card/manager">读者证管理</el-menu-item>
       </el-sub-menu>
+
+      <!-- 借阅管理 -->
+      <el-sub-menu index="/borrow">
+        <template #title>
+          <el-icon><Handbag /></el-icon>
+          <span>借还管理</span>
+        </template>
+
+        <el-menu-item index="/borrow/borrow">借书管理</el-menu-item>
+        <el-menu-item index="/borrow/return">还书管理</el-menu-item>
+      </el-sub-menu>
     </el-menu>
   </el-aside>
 </template>

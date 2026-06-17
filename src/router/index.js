@@ -94,6 +94,18 @@ const routes = [
         component: () => import('@/views/card/CardManager.vue'),
         meta: { title: '读者证管理', pageName: '读者证管理', requireAuth: true },
       },
+      {
+        path: '/borrow/borrow',
+        name: 'BorrowBook',
+        component: () => import('@/views/borrow/BorrowBook.vue'),
+        meta: { title: '借还图书', pageName: '借书办理', requireAuth: true },
+      },
+      {
+        path: '/borrow/return',
+        name: 'ReturnBook',
+        component: () => import('@/views/borrow/ReturnBook.vue'),
+        meta: { title: '借还图书', pageName: '还书办理', requireAuth: true },
+      },
     ],
   },
 ]
