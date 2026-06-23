@@ -33,3 +33,33 @@ export const formatLocalDate = (date) => {
   // 转成中国时区时间
   return new Date(date).toLocaleString('zh-CN')
 }
+
+/**
+ * 根据借阅状态码，返回状态类型和类型码
+ */
+export const borrowStatusMap = {
+  0: {
+    text: '借阅中',
+    type: 'success',
+  },
+  1: {
+    text: '已归还',
+    type: 'primary',
+  },
+  2: {
+    text: '已逾期',
+    type: 'danger',
+  },
+  3: {
+    text: '已损坏',
+    type: 'info',
+  },
+  4: {
+    text: '已遗失',
+    type: 'default',
+  },
+  5: {
+    text: '已赔偿',
+    type: 'warning',
+  },
+}

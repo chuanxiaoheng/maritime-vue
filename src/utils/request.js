@@ -37,10 +37,10 @@ request.interceptors.response.use(
       if (res.code === 401) {
         ElMessage.error(message + '请重新登录')
         setTimeout(() => {
-          router.push('/login')
           store.dispatch('logout')
+          router.push('/login')
         }, 500)
-      } else if (res.code == 403) {
+      } else if (res.code === 403) {
         // 请求权限不足
         ElMessage.error(message + '无权限执行此操作')
       } else {
@@ -53,11 +53,11 @@ request.interceptors.response.use(
     return res
   },
   (err) => {
-    if (err.response.code === 404) {
+    if (err.response.status === 404) {
       ElMessage.error('请求资源不存在')
-    } else if (err.response.code === 500) {
+    } else if (err.response.status === 500) {
       ElMessage.error('服务器正在休息，请稍后重试')
-    } else if ((err.response.code = 401)) {
+    } else if (err.response.status === 401) {
       ElMessage.error('登录已过期')
       store.dispatch('logout')
       router.push('/login')

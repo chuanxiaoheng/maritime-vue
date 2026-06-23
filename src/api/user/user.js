@@ -35,3 +35,12 @@ export const fetchWithoutCardUsers = () => {
     method: 'get',
   })
 }
+
+// 根据用户名或者读者证号，获取借阅用户
+export const fetchBorrowUser = (keywords) => {
+  return request({
+    url: '/api/user/borrowUser',
+    method: 'get',
+    params: { keywords },
+  })
+}

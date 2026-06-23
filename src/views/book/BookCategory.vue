@@ -192,7 +192,7 @@ onMounted(() => {
         <span>图书分类筛选</span>
       </template>
 
-      <el-form :model="searchForm" inline class="">
+      <el-form :model="searchForm" inline class="search-card-form">
         <el-form-item label="分类名称" prop="name">
           <el-input v-model="searchForm.name" placeholder="请输入分类名称" @keyup.enter="handleSearch" clearable />
         </el-form-item>

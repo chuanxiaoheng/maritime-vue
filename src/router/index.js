@@ -106,6 +106,12 @@ const routes = [
         component: () => import('@/views/borrow/ReturnBook.vue'),
         meta: { title: '借还图书', pageName: '还书办理', requireAuth: true },
       },
+      {
+        path: '/borrow/record',
+        name: 'BorrowRecord',
+        component: () => import('@/views/borrow/BorrowRecord.vue'),
+        meta: { title: '借阅历史', pageName: '借阅历史', requireAuth: true },
+      },
     ],
   },
 ]
