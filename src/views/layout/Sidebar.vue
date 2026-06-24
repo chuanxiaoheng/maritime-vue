@@ -91,7 +91,7 @@ const toggleCollapse = () => {
 
         <el-menu-item index="/borrow/borrow">借书管理</el-menu-item>
         <el-menu-item index="/borrow/return">还书管理</el-menu-item>
-        <el-menu-item index="/borrow/record">借阅管理</el-menu-item>
+        <el-menu-item index="/borrow/record">借阅记录</el-menu-item>
       </el-sub-menu>
     </el-menu>
   </el-aside>

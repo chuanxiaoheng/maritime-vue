@@ -159,7 +159,7 @@ const url = 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.
         <el-card class="notice-card">
           <template #header>
             <div class="card-header">
-              <span>最近信息</span>
+              <span>最新系统公告</span>
               <el-link type="primary" underline="hover">查看更多</el-link>
             </div>
           </template>
@@ -345,6 +345,10 @@ const url = 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.
   display: flex;
   justify-content: space-between;
   align-items: center;
+  span {
+    font-weight: 600;
+    color: #121212;
+  }
 }
 // 尾部内容
 .footer-row {

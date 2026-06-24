@@ -7,7 +7,7 @@
       </template>
 
       <!-- 读者查询 -->
-      <el-form inline @submit.prevent>
+      <el-form inline :model="readerForm" @submit.prevent>
         <el-form-item label="读者或读者证号">
           <el-input v-model="readerForm.keywords" @keyup.enter="handleSearchReader" placeholder="请输入关键字">
             <template #append>

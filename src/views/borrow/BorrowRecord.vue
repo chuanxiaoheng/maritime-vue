@@ -31,8 +31,11 @@ const dialogTitle = ref('') // 对话框标题
 const isEdit = ref(false) // 修改标识 -true表示编辑 -false表示新增
 
 const recordForm = reactive({})
+const dialogRef = ref(null)
 
-const rules = reactive({})
+const rules = reactive({
+  dueTime: [{ required: true, message: '请填写内容', trigger: 'blur' }],
+})
 
 // 搜索
 const handleSearch = () => {
@@ -50,32 +53,15 @@ const handleReset = () => {
 
 const handleEdit = (row) => {
   dialogVisible.value = true
-  dialogTitle.value = '编辑图书分类'
+  dialogTitle.value = '编辑借阅记录'
   isEdit.value = true
   nextTick(() => {
     Object.assign(recordForm, row)
   })
 }
 
-const handleDelete = (row) => {
-  ElMessageBox.confirm(`确定要删除借阅记录“${row.name}”这个分类吗？`, '警告', {
-    confirmButtonText: '确认',
-    cancelButtonText: '取消',
-    type: 'warning',
-  })
-    .then(() => {
-      // deleteCategory(`${row.id}`)
-      //   .then((res) => {
-      //     ElMessage.success('删除成功')
-      //     loadData()
-      //   })
-      //   .catch((err) => console.log(err))
-    })
-    .catch((err) => console.log(err))
-}
-
 const handleSave = async () => {
-  await recordForm.value.validate()
+  await dialogRef.value.validate()
   updateBorrowRecord(recordForm)
     .then((res) => {
       dialogVisible.value = false
@@ -120,6 +106,7 @@ const loadData = async () => {
     .then((res) => {
       if (res.code === 200) {
         tableData.value = res.data.list
+
         pagination.total = res.data.total
         loading.value = false
       }
@@ -188,8 +175,8 @@ onMounted(() => {
         <el-table-column prop="borrowTime" label="借阅时间" width="100" align="center" />
         <el-table-column prop="dueTime" label="应还时间" width="100" align="center" />
         <el-table-column prop="returnTime" label="归还时间" width="100" align="center">
-          <template #default="{ row }">
-            <span v-if="row.returnTime" {{ row.returnTime }}></span>
+          <template #default="scope">
+            <span v-if="scope.row.returnTime">{{ scope.row.returnTime }}</span>
             <el-tag type="info" v-else>未归还</el-tag>
           </template>
         </el-table-column>
@@ -201,7 +188,7 @@ onMounted(() => {
         <el-table-column prop="remark" label="借阅备注" width="200" align="center" />
         <el-table-column label="操作" fixed="right" width="200" align="center">
           <template #default="scope">
-            <el-button type="success" link icon="Refresh" @click="handleReturn(scope.row)">归还</el-button>
+            <el-button type="success" link icon="Refresh" @click="handleReturn(scope.row)" v-if="scope.row.status === 0">归还</el-button>
             <el-button type="primary" link icon="Edit" @click="handleEdit(scope.row)">编辑</el-button>
           </template>
         </el-table-column>

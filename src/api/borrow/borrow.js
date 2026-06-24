@@ -25,3 +25,12 @@ export const updateBorrowRecord = (data) => {
     data,
   })
 }
+
+// 归还图书
+export const returnBorrowRecords = (data) => {
+  return request({
+    url: '/api/borrow/return',
+    method: 'post',
+    data,
+  })
+}
