@@ -62,7 +62,7 @@ const toggleCollapse = () => {
           <span>图书管理</span>
         </template>
 
-        <el-menu-item index="/book/manager">图书列表</el-menu-item>
+        <el-menu-item index="/book/manager">图书管理</el-menu-item>
         <el-menu-item index="/book/category">图书分类</el-menu-item>
         <el-menu-item index="/book/copy">图书副本</el-menu-item>
       </el-sub-menu>
@@ -78,8 +78,8 @@ const toggleCollapse = () => {
           <span>证件管理</span>
         </template>
 
-        <el-menu-item index="/card/type">读者证类型</el-menu-item>
-        <el-menu-item index="/card/manager">读者证管理</el-menu-item>
+        <el-menu-item index="/card/type">证件分类</el-menu-item>
+        <el-menu-item index="/card/manager">证件管理</el-menu-item>
       </el-sub-menu>
 
       <!-- 借阅管理 -->
@@ -89,8 +89,8 @@ const toggleCollapse = () => {
           <span>借还管理</span>
         </template>
 
-        <el-menu-item index="/borrow/borrow">借书管理</el-menu-item>
-        <el-menu-item index="/borrow/return">还书管理</el-menu-item>
+        <el-menu-item index="/borrow/borrow">借书办理</el-menu-item>
+        <el-menu-item index="/borrow/return">还书办理</el-menu-item>
         <el-menu-item index="/borrow/record">借阅记录</el-menu-item>
       </el-sub-menu>
     </el-menu>

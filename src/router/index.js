@@ -110,7 +110,7 @@ const routes = [
         path: '/borrow/record',
         name: 'BorrowRecord',
         component: () => import('@/views/borrow/BorrowRecord.vue'),
-        meta: { title: '借阅历史', pageName: '借阅历史', requireAuth: true },
+        meta: { title: '借阅记录', pageName: '借阅记录', requireAuth: true },
       },
     ],
   },
